@@ -161,10 +161,38 @@
 
         <div class="buttons">
             <a href="https://t.me/AiveyYay" class="btn btn-primary">Написать в Telegram</a>
-            <div class="btn btn-secondary" style="cursor: default;">d.russin@yandex.ru</div>
+            <button class="btn btn-secondary" onclick="copyEmail()" id="emailBtn">
+                d.russin@yandex.ru
+            </button>
             <a href="https://github.com/Ai-vey?tab=repositories" class="btn btn-secondary">Посмотреть портфолио</a>
         </div>
     </div>
 
+
+    <script>
+        function copyEmail() {
+            const email = 'd.russin@yandex.ru';
+            
+            navigator.clipboard.writeText(email).then(() => {
+                const btn = document.getElementById('emailBtn');
+                const originalText = btn.innerHTML;
+                
+                btn.innerHTML = '✅ Скопировано!';
+                btn.style.backgroundColor = '#22c55e';
+                btn.style.color = 'white';
+                btn.style.borderColor = '#22c55e';
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.backgroundColor = '';
+                    btn.style.color = '';
+                    btn.style.borderColor = '';
+                }, 2000);
+            }).catch(err => {
+                console.error('Ошибка копирования:', err);
+                alert('Email: ' + email);
+            });
+        }
+    </script>
 </body>
 </html>
