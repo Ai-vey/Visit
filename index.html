@@ -195,4 +195,743 @@
         }
     </script>
 </body>
+</html><!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="Русин Даниил — Fullstack & Embedded разработчик. Архитектура, изолированные контуры, LLM, C#, Python, Java.">
+    <meta name="theme-color" content="#0f172a" id="theme-color-meta">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="Русин Даниил | Fullstack & Embedded Developer">
+    <meta property="og:description" content="5+ лет опыта. C#, Python, Java, WPF, Angular, LLM.">
+    <meta property="og:type" content="profile">
+    <meta property="profile:first_name" content="Даниил">
+    <meta property="profile:last_name" content="Русин">
+    
+    <title>Русин Даниил | Fullstack & Embedded Developer</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ========================================
+           🎨 CSS VARIABLES & THEME SYSTEM
+           ======================================== */
+        :root {
+            --color-bg: #0f172a;
+            --color-bg-secondary: #1e293b;
+            --color-bg-tertiary: #334155;
+            --color-bg-hover: #475569;
+            --color-text-primary: #f8fafc;
+            --color-text-secondary: #cbd5e1;
+            --color-text-muted: #94a3b8;
+            --color-accent: #6366f1;
+            --color-accent-hover: #818cf8;
+            --color-accent-glow: rgba(99, 102, 241, 0.4);
+            --color-border: #475569;
+            --color-success: #22c55e;
+            --color-warning: #f59e0b;
+            --color-shadow: rgba(0, 0, 0, 0.4);
+            
+            --font-size-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.75rem);
+            --font-size-sm: clamp(0.8rem, 0.75rem + 0.25vw, 0.875rem);
+            --font-size-base: clamp(0.95rem, 0.9rem + 0.25vw, 1rem);
+            --font-size-lg: clamp(1.1rem, 1rem + 0.5vw, 1.25rem);
+            --font-size-xl: clamp(1.3rem, 1.2rem + 0.75vw, 1.5rem);
+            --font-size-2xl: clamp(1.5rem, 1.4rem + 1vw, 1.875rem);
+            --font-size-3xl: clamp(1.8rem, 1.6rem + 1.5vw, 2.25rem);
+            
+            --spacing-xxs: 0.25rem;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 0.75rem;
+            --spacing-md: 1rem;
+            --spacing-lg: clamp(1.25rem, 1rem + 1vw, 1.5rem);
+            --spacing-xl: clamp(1.5rem, 1.25rem + 1.5vw, 2rem);
+            --spacing-2xl: clamp(2rem, 1.75rem + 2vw, 3rem);
+            
+            --transition-fast: 150ms ease;
+            --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+            
+            --shadow-sm: 0 1px 2px var(--color-shadow);
+            --shadow-md: 0 4px 6px -1px var(--color-shadow);
+            --shadow-lg: 0 10px 15px -3px var(--color-shadow);
+            --shadow-xl: 0 25px 50px -12px var(--color-shadow);
+            --glow: 0 0 20px var(--color-accent-glow);
+            
+            --radius-sm: 0.375rem;
+            --radius-md: 0.75rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.5rem;
+            --radius-full: 9999px;
+            
+            --container-max: 480px;
+            --header-padding: var(--spacing-2xl) var(--spacing-xl) var(--spacing-xl);
+        }
+
+        [data-theme="light"] {
+            --color-bg: #f8fafc;
+            --color-bg-secondary: #ffffff;
+            --color-bg-tertiary: #f1f5f9;
+            --color-bg-hover: #e2e8f0;
+            --color-text-primary: #0f172a;
+            --color-text-secondary: #334155;
+            --color-text-muted: #64748b;
+            --color-border: #cbd5e1;
+            --color-shadow: rgba(0, 0, 0, 0.08);
+            --color-accent-glow: rgba(99, 102, 241, 0.2);
+        }
+
+        /* ========================================
+           🧱 BASE STYLES & RESET (Optimized)
+           ======================================== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-size: 16px; }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: var(--spacing-lg);
+            background-image: radial-gradient(ellipse at top, rgba(99, 102, 241, 0.08) 0%, transparent 50%), radial-gradient(ellipse at bottom right, rgba(99, 102, 241, 0.05) 0%, transparent 50%);
+            background-attachment: fixed;
+            transition: background-color var(--transition-base), color var(--transition-base);
+            will-change: background-color, color;
+            contain: layout style;
+        }
+
+        /* ========================================
+           🎛️ CONTROLS BAR (Optimized)
+           ======================================== */
+        .controls-bar {
+            position: fixed; top: var(--spacing-md); right: var(--spacing-md);
+            display: flex; gap: var(--spacing-xs); z-index: 100;
+            background: var(--color-bg-secondary); padding: var(--spacing-xxs);
+            border-radius: var(--radius-full); border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-md); backdrop-filter: blur(8px);
+            transition: all var(--transition-base);
+            will-change: transform;
+        }
+        .control-btn {
+            width: 40px; height: 40px; border-radius: var(--radius-full);
+            border: none; background: transparent; color: var(--color-text-secondary);
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; transition: all var(--transition-fast); position: relative;
+            contain: layout style;
+        }
+        .control-btn:hover { background: var(--color-bg-tertiary); color: var(--color-accent); transform: scale(1.05); }
+        .control-btn .tooltip {
+            position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%) translateY(-8px);
+            background: var(--color-bg-tertiary); color: var(--color-text-primary);
+            padding: var(--spacing-xxs) var(--spacing-sm); border-radius: var(--radius-sm);
+            font-size: var(--font-size-xs); white-space: nowrap; opacity: 0; pointer-events: none;
+            transition: opacity var(--transition-fast), transform var(--transition-fast);
+            border: 1px solid var(--color-border);
+            will-change: opacity, transform;
+        }
+        .control-btn:hover .tooltip { opacity: 1; transform: translateX(-50%) translateY(-12px); }
+
+        /* ========================================
+           🃏 MAIN CARD (Optimized)
+           ======================================== */
+        .card {
+            background: var(--color-bg-secondary); width: 100%; max-width: var(--container-max);
+            border-radius: var(--radius-xl); box-shadow: var(--shadow-xl), var(--glow);
+            overflow: hidden; position: relative; border: 1px solid var(--color-border);
+            animation: cardEntrance var(--transition-slow) forwards;
+            opacity: 0; transform: translateY(20px);
+            transition: background-color var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+            will-change: transform, opacity;
+            contain: layout style paint;
+        }
+        @keyframes cardEntrance { to { opacity: 1; transform: translateY(0); } }
+        .card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--color-accent), #a855f7, #06b6d4);
+            opacity: 0.8; transition: opacity var(--transition-base);
+        }
+
+        /* HEADER (Updated with personal info) */
+        .card-header { padding: var(--header-padding); text-align: center; position: relative; }
+        .avatar-wrapper { position: relative; width: clamp(120px, 25vw, 140px); height: clamp(120px, 25vw, 140px); margin: 0 auto var(--spacing-lg); }
+        .avatar { width: 100%; height: 100%; border-radius: var(--radius-full); object-fit: cover; border: 3px solid var(--color-accent); box-shadow: var(--shadow-lg); transition: transform var(--transition-base), box-shadow var(--transition-base); background: var(--color-bg-tertiary); will-change: transform, box-shadow; }
+        .avatar:hover { transform: scale(1.03); box-shadow: var(--shadow-xl), var(--glow); }
+        .avatar-status { position: absolute; bottom: 8px; right: 8px; width: 16px; height: 16px; background: var(--color-success); border: 3px solid var(--color-bg-secondary); border-radius: var(--radius-full); animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+        
+        .name { font-size: var(--font-size-3xl); font-weight: 700; margin-bottom: var(--spacing-xxs); letter-spacing: -0.025em; background: linear-gradient(135deg, var(--color-text-primary), var(--color-accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        
+        /* 👤 PERSONAL INFO BADGE (NEW - under name) */
+        .personal-info {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin: var(--spacing-xs) auto var(--spacing-md);
+            padding: var(--spacing-xxs) var(--spacing-sm);
+            background: var(--color-bg-tertiary);
+            border-radius: var(--radius-full);
+            border: 1px solid var(--color-border);
+            font-size: var(--font-size-xs);
+            color: var(--color-text-muted);
+            max-width: fit-content;
+        }
+        .personal-info-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xxs);
+        }
+        .personal-info-item::after {
+            content: '•';
+            color: var(--color-accent);
+            margin-left: var(--spacing-sm);
+        }
+        .personal-info-item:last-child::after { display: none; }
+        .personal-info-icon { color: var(--color-accent); }
+        
+        .title { font-size: var(--font-size-sm); color: var(--color-accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--spacing-md); }
+        .bio { font-size: var(--font-size-base); color: var(--color-text-secondary); max-width: 360px; margin: 0 auto; line-height: 1.7; }
+
+        /* SECTIONS */
+        .section { padding: 0 var(--spacing-xl); border-top: 1px solid var(--color-border); transition: border-color var(--transition-base); }
+        .section-header { display: flex; align-items: center; justify-content: space-between; padding: var(--spacing-lg) 0; cursor: pointer; user-select: none; }
+        .section-header:hover { opacity: 0.9; }
+        .section-title { font-size: var(--font-size-lg); font-weight: 600; display: flex; align-items: center; gap: var(--spacing-xs); }
+        .section-title::before { content: ''; width: 4px; height: 16px; background: var(--color-accent); border-radius: var(--radius-sm); }
+        .toggle-icon { font-size: var(--font-size-lg); transition: transform var(--transition-base); color: var(--color-text-muted); will-change: transform; }
+        .section-content { max-height: 0; overflow: hidden; transition: max-height var(--transition-slow), opacity var(--transition-base); opacity: 0; contain: content; }
+        .section.expanded .section-content { max-height: 1500px; opacity: 1; padding-bottom: var(--spacing-xl); }
+        .section.expanded .toggle-icon { transform: rotate(180deg); }
+
+        /* SKILLS */
+        .skills-grid { display: flex; flex-direction: column; gap: var(--spacing-lg); }
+        .skill-category { margin-bottom: var(--spacing-sm); }
+        .skill-category-title { font-size: var(--font-size-sm); color: var(--color-text-muted); margin-bottom: var(--spacing-xs); font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
+        .skills-row { display: flex; flex-wrap: wrap; gap: var(--spacing-xs); }
+        .skill-tag { background: var(--color-bg-tertiary); color: var(--color-text-secondary); padding: var(--spacing-xxs) var(--spacing-sm); border-radius: var(--radius-md); font-size: var(--font-size-xs); font-weight: 500; transition: all var(--transition-fast); border: 1px solid transparent; cursor: default; white-space: nowrap; will-change: transform, background-color; contain: layout style; }
+        .skill-tag:hover { background: var(--color-accent); color: white; border-color: var(--color-accent-hover); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .skill-tag.primary { background: rgba(99, 102, 241, 0.15); color: var(--color-accent); border-color: var(--color-accent); }
+
+        /* TIMELINE & TASKS */
+        .timeline { position: relative; padding-left: var(--spacing-lg); margin: var(--spacing-md) 0; }
+        .timeline::before { content: ''; position: absolute; left: 3px; top: 8px; bottom: 8px; width: 2px; background: var(--color-border); transition: background-color var(--transition-base); }
+        .timeline-item { position: relative; padding-bottom: var(--spacing-xl); }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-item::before { content: ''; position: absolute; left: -29px; top: 6px; width: 10px; height: 10px; border-radius: var(--radius-full); background: var(--color-accent); border: 2px solid var(--color-bg-secondary); transition: border-color var(--transition-base); }
+        .timeline-title { font-weight: 600; color: var(--color-text-primary); margin-bottom: var(--spacing-xxs); font-size: var(--font-size-base); }
+        .timeline-meta { font-size: var(--font-size-xs); color: var(--color-text-muted); margin-bottom: var(--spacing-xs); }
+        .task-list { margin: var(--spacing-xs) 0 var(--spacing-sm); padding-left: var(--spacing-sm); list-style: none; color: var(--color-text-secondary); font-size: var(--font-size-sm); line-height: 1.6; }
+        .task-list li { position: relative; padding-left: var(--spacing-sm); margin-bottom: var(--spacing-xxs); }
+        .task-list li::before { content: '▹'; position: absolute; left: -14px; color: var(--color-accent); font-weight: bold; }
+        .task-list strong { color: var(--color-text-primary); font-weight: 600; }
+        .tech-stack { display: flex; flex-wrap: wrap; gap: var(--spacing-xxs); padding-top: var(--spacing-sm); border-top: 1px dashed var(--color-border); margin-top: var(--spacing-xs); }
+
+        /* ========================================
+           📊 KEY METRICS BLOCK
+           ======================================== */
+        .metrics-section {
+            padding: var(--spacing-xl);
+            border-top: 1px solid var(--color-border);
+            background: var(--color-bg-tertiary);
+            margin: 0 var(--spacing-xl);
+            border-radius: var(--radius-lg);
+        }
+        .metrics-title {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        .metrics-title::before { content: ''; width: 4px; height: 16px; background: var(--color-accent); border-radius: var(--radius-sm); }
+        .metrics-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--spacing-md); }
+        .metric-item {
+            text-align: center; padding: var(--spacing-sm);
+            background: var(--color-bg-secondary); border-radius: var(--radius-md);
+            border: 1px solid var(--color-border);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+            will-change: transform;
+            contain: layout style;
+        }
+        .metric-item:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .metric-value { font-size: var(--font-size-2xl); font-weight: 700; color: var(--color-accent); line-height: 1; margin-bottom: var(--spacing-xxs); }
+        .metric-label { font-size: var(--font-size-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+
+        /* ========================================
+           🔗 ACTION BUTTONS
+           ======================================== */
+        .actions { padding: var(--spacing-xl); border-top: 1px solid var(--color-border); display: flex; flex-direction: column; gap: var(--spacing-sm); }
+        .btn {
+            display: flex; align-items: center; justify-content: center; gap: var(--spacing-sm);
+            width: 100%; padding: var(--spacing-sm) var(--spacing-lg); border-radius: var(--radius-md);
+            font-weight: 600; font-size: var(--font-size-sm); text-decoration: none; cursor: pointer;
+            transition: all var(--transition-base); border: none; position: relative; overflow: hidden;
+            background: var(--color-bg-tertiary); color: var(--color-text-primary);
+            will-change: transform, background-color;
+            contain: layout style;
+        }
+        .btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); transition: left var(--transition-slow); }
+        .btn:hover::before { left: 100%; }
+        .btn-primary { background: linear-gradient(135deg, var(--color-accent), #7c3aed); color: white; box-shadow: var(--shadow-md); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg), var(--glow); }
+        .btn-secondary { border: 1px solid var(--color-border); }
+        .btn-secondary:hover { background: var(--color-bg-hover); transform: translateY(-1px); }
+        .btn-copy.copied { background: var(--color-success) !important; border-color: var(--color-success) !important; color: white !important; }
+        .btn-icon { font-size: 1.1em; display: inline-flex; flex-shrink: 0; }
+        .btn-text { transition: opacity var(--transition-fast); }
+
+        /* ========================================
+           🎯 UTILITY CLASSES & ANIMATIONS
+           ======================================== */
+        .fade-in { animation: fadeIn var(--transition-slow) forwards; opacity: 0; }
+        .fade-in.delay-1 { animation-delay: 100ms; }
+        .fade-in.delay-2 { animation-delay: 200ms; }
+        .fade-in.delay-3 { animation-delay: 300ms; }
+        .fade-in.delay-4 { animation-delay: 400ms; }
+        @keyframes fadeIn { to { opacity: 1; } }
+        .lang-transition { opacity: 0.4; transition: opacity var(--transition-fast); }
+
+        /* ========================================
+           📱 RESPONSIVE BREAKPOINTS (Optimized)
+           ======================================== */
+        @media (min-width: 768px) { :root { --container-max: 520px; } .controls-bar { top: var(--spacing-lg); right: var(--spacing-lg); } }
+        @media (min-width: 1024px) { :root { --container-max: 560px; } body { padding: var(--spacing-xl); } }
+        @media (max-width: 480px) {
+            :root { --header-padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-lg); }
+            body { padding: var(--spacing-md); align-items: flex-start; padding-top: 70px; }
+            .card { max-width: 100%; border-radius: var(--radius-lg); }
+            .controls-bar { top: var(--spacing-sm); right: var(--spacing-sm); transform: scale(0.95); transform-origin: top right; }
+            .card-header { padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-lg); }
+            .section, .actions { padding-left: var(--spacing-lg); padding-right: var(--spacing-lg); }
+            .metrics-section { margin: 0 var(--spacing-lg); padding: var(--spacing-lg); }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); gap: var(--spacing-sm); }
+            .btn { padding: var(--spacing-sm); font-size: var(--font-size-sm); }
+            .task-list { margin-left: var(--spacing-md); font-size: 0.85rem; }
+            .tech-stack { gap: 4px; }
+            .skill-tag { font-size: 0.65rem; padding: 3px 8px; }
+            .personal-info { gap: var(--spacing-xs); padding: 2px 8px; font-size: 0.7rem; }
+            .personal-info-item::after { margin-left: var(--spacing-xs); }
+        }
+        @media (max-width: 360px) {
+            .avatar-wrapper { width: 100px; height: 100px; }
+            .name { font-size: var(--font-size-2xl); }
+            .controls-bar { transform: scale(0.9); }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .personal-info { flex-direction: column; gap: 2px; }
+            .personal-info-item::after { display: none; }
+        }
+        @media (max-height: 500px) and (orientation: landscape) {
+            body { align-items: center; padding: var(--spacing-sm); }
+            .card { max-height: 90vh; overflow-y: auto; }
+            .controls-bar { position: absolute; }
+        }
+        @media (min-width: 1440px) { body { padding: var(--spacing-2xl); } }
+
+        /* ========================================
+           ♿ ACCESSIBILITY & PRINT (Optimized)
+           ======================================== */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .card, .avatar, .btn, .control-btn, .metric-item, .skill-tag {
+                transition: none !important;
+                animation: none !important;
+                will-change: auto !important;
+            }
+        }
+        .btn:focus-visible, .section-header:focus-visible, .control-btn:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+        @media (prefers-contrast: high) { :root { --color-border: #fff; --shadow-md: none; --shadow-lg: none; } .btn { border: 2px solid currentColor; } }
+        
+        @media print {
+            body { background: white; padding: 0; color: black; }
+            .card { box-shadow: none; border: 1px solid #ccc; max-width: 100%; color: black; }
+            .controls-bar, .btn, .section-header { display: none !important; }
+            .section-content { max-height: none !important; opacity: 1 !important; padding-bottom: var(--spacing-md) !important; }
+            .skill-tag { border: 1px solid #000; color: #000; background: none; }
+            a { color: #000; text-decoration: none; }
+            .task-list li::before { color: #000; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+            .metric-item { border: 1px solid #000; }
+            .personal-info { border-color: #000; color: #000; background: none; }
+            .personal-info-item::after { color: #000; }
+        }
+
+        /* ========================================
+           📉 DATA SAVER MODE (Optional)
+           ======================================== */
+        @media (prefers-reduced-data: reduce) {
+            body { background-image: none; }
+            .card::before { display: none; }
+            .avatar { border: 2px solid var(--color-accent); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="controls-bar" role="navigation" aria-label="Настройки">
+        <button class="control-btn" id="themeToggle" aria-label="Переключить тему" title="Toggle theme">
+            <span class="icon">🌓</span>
+            <span class="tooltip" data-i18n="toggleTheme">Тема</span>
+        </button>
+        <button class="control-btn" id="langToggle" aria-label="Переключить язык" title="Switch language">
+            <span class="icon">🌐</span>
+            <span class="tooltip" data-i18n="toggleLang">Язык</span>
+        </button>
+    </nav>
+
+    <article class="card" role="region" aria-label="Визитная карточка Русин Даниил">
+        
+        <header class="card-header fade-in">
+            <div class="avatar-wrapper">
+                <img src="Profile.jpg" alt="Фото профиля: Русин Даниил" class="avatar" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22140%22 height=%22140%22 viewBox=%220 0 140 140%22%3E%3Crect fill=%22%23334155%22 width=%22140%22 height=%22140%22/%3E%3Ctext fill=%22%2394a3b8%22 font-family=%22sans-serif%22 font-size=%2214%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22%3ENo Image%3C/text%3E%3C/svg%3E'">
+                <span class="avatar-status" title="Доступен для проектов"></span>
+            </div>
+            
+            <h1 class="name">Русин Даниил</h1>
+            
+            <!-- 👤 PERSONAL INFO (MOVED HERE - under name) -->
+            <div class="personal-info">
+                <span class="personal-info-item">
+                    <span class="personal-info-icon">🎂</span>
+                    <span data-i18n="footnoteAge">23 года</span>
+                </span>
+                <span class="personal-info-item">
+                    <span class="personal-info-icon">💍</span>
+                    <span data-i18n="footnoteStatus">Женат</span>
+                </span>
+            </div>
+            
+            <p class="title" data-i18n="title">Fullstack & Embedded Developer</p>
+            <p class="bio" data-i18n="bio">5+ лет разработки масштабируемых систем, десктопных и embedded-решений. Специализация: архитектура, изолированные контуры, интеграция LLM.</p>
+        </header>
+
+        <!-- 📊 KEY METRICS -->
+        <section class="metrics-section fade-in delay-1">
+            <h3 class="metrics-title" data-i18n="metricsTitle">Ключевые метрики</h3>
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <div class="metric-value">5+</div>
+                    <div class="metric-label" data-i18n="metricYears">лет опыта</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value">15+</div>
+                    <div class="metric-label" data-i18n="metricProjects">проектов</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value">3+</div>
+                    <div class="metric-label" data-i18n="metricJob">года проектных работ</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value">10+</div>
+                    <div class="metric-label" data-i18n="metricTech">технологий</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section expanded" id="skills-section">
+            <div class="section-header" role="button" tabindex="0" aria-expanded="true" aria-controls="skills-content">
+                <h2 class="section-title" data-i18n="skillsTitle">Технологии</h2>
+                <span class="toggle-icon" aria-hidden="true">▼</span>
+            </div>
+            <div class="section-content" id="skills-content">
+                <div class="skills-grid stagger">
+                    <div class="skill-category">
+                        <div class="skill-category-title" data-i18n="backend">Desktop & Backend</div>
+                        <div class="skills-row">
+                            <span class="skill-tag primary">C#</span><span class="skill-tag primary">.NET 8+</span><span class="skill-tag">WPF</span><span class="skill-tag">Python</span><span class="skill-tag">Java</span><span class="skill-tag">Node.js</span><span class="skill-tag">FastAPI</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <div class="skill-category-title" data-i18n="frontend">Frontend & Web</div>
+                        <div class="skills-row">
+                            <span class="skill-tag primary">TypeScript</span><span class="skill-tag">Angular</span><span class="skill-tag">React</span><span class="skill-tag">HTML5/CSS3</span><span class="skill-tag">JSON/REST</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <div class="skill-category-title" data-i18n="infra">Data, Infra & Tools</div>
+                        <div class="skills-row">
+                            <span class="skill-tag">PostgreSQL</span><span class="skill-tag">MS SQL</span><span class="skill-tag">Docker</span><span class="skill-tag">Git/CI/CD</span><span class="skill-tag">Astra Linux</span><span class="skill-tag">LLM/RAG</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section expanded" id="experience-section">
+            <div class="section-header" role="button" tabindex="0" aria-expanded="true" aria-controls="experience-content">
+                <h2 class="section-title" data-i18n="experienceTitle">Опыт и проекты</h2>
+                <span class="toggle-icon" aria-hidden="true">▼</span>
+            </div>
+            <div class="section-content" id="experience-content">
+                <div class="timeline">
+                    <div class="timeline-item fade-in delay-1">
+                        <div class="timeline-title" data-i18n="job4Title">Software Engineer</div>
+                        <div class="timeline-meta" data-i18n="job4Meta">2024 — Наст. время • ФГУП «18 НИИЦ» | Офис</div>
+                        <div data-i18n-html="job4Desc"></div>
+                        <div class="tech-stack">
+                            <span class="skill-tag primary">C#</span><span class="skill-tag">WPF</span><span class="skill-tag">Python</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">C++</span><span class="skill-tag">LLM</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item fade-in delay-2">
+                        <div class="timeline-title" data-i18n="job3Title">Fullstack Developer (GPH)</div>
+                        <div class="timeline-meta" data-i18n="job3Meta">2023 — 2024 • МНИТИ | Гибридный формат</div>
+                        <div data-i18n-html="job3Desc"></div>
+                        <div class="tech-stack">
+                            <span class="skill-tag primary">Python</span><span class="skill-tag">Angular</span><span class="skill-tag">Java</span><span class="skill-tag">HTML/CSS</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item fade-in delay-3">
+                        <div class="timeline-title" data-i18n="job2Title">Developer / System Administrator</div>
+                        <div class="timeline-meta" data-i18n="job2Meta">2022 — 2023 • Вооружённые Силы РФ | Форма допуска №2</div>
+                        <div data-i18n-html="job2Desc"></div>
+                        <div class="tech-stack">
+                            <span class="skill-tag primary">C#</span><span class="skill-tag">WPF</span><span class="skill-tag">Astra Linux</span><span class="skill-tag">MS SQL</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item fade-in delay-4">
+                        <div class="timeline-title" data-i18n="job1Title">Обучение и проектная деятельность</div>
+                        <div class="timeline-meta" data-i18n="job1Meta">2018 — 2022 • КГПК | Программирование в компьютерных системах + Оператор ЭВМ</div>
+                        <div data-i18n-html="job1Desc"></div>
+                        <div class="tech-stack">
+                            <span class="skill-tag primary">.NET 8+</span><span class="skill-tag">WPF</span><span class="skill-tag">MS SQL</span><span class="skill-tag">1C</span><span class="skill-tag">TTS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="actions">
+            <a href="https://t.me/AiveyYay" class="btn btn-primary" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram">
+                <span class="btn-icon">✈️</span><span data-i18n="btnTelegram">Написать в Telegram</span>
+            </a>
+            <button class="btn btn-secondary btn-copy" id="emailBtn" aria-label="Скопировать email" onclick="copyToClipboard('d.russin@yandex.ru', this)">
+                <span class="btn-icon">✉️</span><span class="btn-text">d.russin@yandex.ru</span>
+            </button>
+            <button class="btn btn-secondary btn-copy" id="phoneBtn" aria-label="Скопировать телефон" onclick="copyToClipboard('+79045227843', this)">
+                <span class="btn-icon">📱</span><span class="btn-text">+7 (904) 522-78-43</span>
+            </button>
+            <a href="https://github.com/Ai-vey?tab=repositories" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" aria-label="Посмотреть портфолио на GitHub">
+                <span class="btn-icon">🐙</span><span data-i18n="btnPortfolio">Портфолио на GitHub</span>
+            </a>
+            <button class="btn btn-secondary" id="pdfBtn" aria-label="Скачать резюме в PDF" onclick="downloadPDF()">
+                <span class="btn-icon">📄</span><span data-i18n="btnPDF">Скачать резюме (PDF)</span>
+            </button>
+        </div>
+    </article>
+
+    <script>
+        /* ========================================
+           🌐 i18n SYSTEM (Optimized with cache)
+           ======================================== */
+        const i18n = {
+            ru: {
+                toggleTheme: 'Тема', toggleLang: 'Язык',
+                title: 'Fullstack & Embedded Developer',
+                bio: '5+ лет разработки масштабируемых систем, десктопных и embedded-решений. Специализация: архитектура, изолированные контуры, интеграция LLM.',
+                skillsTitle: 'Технологии', backend: 'Desktop & Backend', frontend: 'Frontend & Web', infra: 'Data, Infra & Tools',
+                experienceTitle: 'Опыт и проекты',
+                metricsTitle: 'Ключевые метрики',
+                metricYears: 'лет опыта', metricProjects: 'проектов', metricJob: 'года проектных работ', metricTech: 'технологий',
+                job4Title: 'Software Engineer', job4Meta: '2024 — Наст. время • ФГУП «18 НИИЦ» | Офис',
+                job4Desc: `<ul class="task-list"><li>Разработка ПО для управления механическими устройствами с визуальным интерфейсом (C#, WPF, HTML)</li><li>Проектирование и реализация БД для хранения и визуализации результатов тестирования (PostgreSQL, C#, WPF)</li><li>Разработка прошивки и десктопного приложения для управления антенными модулями по SPI-шине (C++, C#, Windows Forms)</li><li>Конвертер сигналов логического анализатора: двухпоточный захват → пакетная обработка → экспорт в Excel (C#, WPF)</li><li>Универсальный текстовый конвертер с поддержкой LLM для семантической обработки (Python, uvicorn, Java, JSON)</li><li>Подготовка изолированного серверного решения с локальными нейросетями для автоматизации до 95% рутинных операций</li></ul>`,
+                job3Title: 'Fullstack Developer (GPH)', job3Meta: '2023 — 2024 • МНИТИ | Гибридный формат',
+                job3Desc: `<ul class="task-list"><li>Разработка модулей информационной платформы: backend на Python, frontend на Angular</li><li>Реализация ETL-пайплайна для миграции архивных данных на производственные сервера (командная разработка, Java)</li><li>Интеграция с существующей инфраструктурой, обеспечение целостности данных при переносе</li></ul>`,
+                job2Title: 'Developer / System Administrator', job2Meta: '2022 — 2023 • Вооружённые Силы РФ | Форма допуска №2',
+                job2Desc: `<ul class="task-list"><li>Автоматизация документооборота по работе с формами допуска: десктопное приложение (C#, WPF)</li><li>Администрирование серверов, оптимизация межплатформенного обмена данными (Windows ↔ Astra Linux)</li><li>Обеспечение работоспособности критической инфраструктуры в закрытом контуре</li></ul>`,
+                job1Title: 'Обучение и проектная деятельность', job1Meta: '2018 — 2022 • КГПК | Программирование в компьютерных системах + Оператор ЭВМ',
+                job1Desc: `<ul class="task-list"><li><strong>Хакатон:</strong> прототип голосового переводчика с TTS-движком (синтез речи) — архитектура на C#, WPF, MS SQL</li><li><strong>WorldSkills Junior:</strong> подготовка по профилю «Программные решения для бизнеса» — углублённая работа с C#, WPF, реляционными БД</li><li><strong>Технологический стек:</strong> C#, .NET 8+, WPF, 1C:Предприятие, HTML/CSS, MS SQL, Adobe Creative Suite</li></ul>`,
+                btnTelegram: 'Написать в Telegram', btnPortfolio: 'Портфолио на GitHub', btnPDF: 'Скачать резюме (PDF)',
+                copied: '✓ Скопировано', available: 'Доступен для проектов',
+                footnoteAge: '23 года', footnoteStatus: 'Женат'
+            },
+            en: {
+                toggleTheme: 'Theme', toggleLang: 'Language',
+                title: 'Fullstack & Embedded Developer',
+                bio: '5+ years building scalable systems, desktop & embedded solutions. Specialized in architecture, isolated environments, and LLM integration.',
+                skillsTitle: 'Technologies', backend: 'Desktop & Backend', frontend: 'Frontend & Web', infra: 'Data, Infra & Tools',
+                experienceTitle: 'Experience & Projects',
+                metricsTitle: 'Key Metrics',
+                metricYears: 'years exp.', metricProjects: 'projects', metricJob: 'years of project work', metricTech: 'technologies',
+                job4Title: 'Software Engineer', job4Meta: '2024 — Present • FSUE "18 NIIC" | Office',
+                job4Desc: `<ul class="task-list"><li>Developed software for mechanical device control with visual interface (C#, WPF, HTML)</li><li>Designed and implemented database architecture for storing & visualizing test results (PostgreSQL, C#, WPF)</li><li>Created firmware & desktop application for antenna module control via SPI bus (C++, C#, WinForms)</li><li>Built logic analyzer signal converter: dual-stream capture → packet processing → Excel export (C#, WPF)</li><li>Universal text converter with LLM semantic processing capabilities (Python, uvicorn, Java, JSON)</li><li>Preparing isolated server solution with local LLMs to automate up to 95% of routine office operations</li></ul>`,
+                job3Title: 'Fullstack Developer (Contract)', job3Meta: '2023 — 2024 • MNITI | Hybrid',
+                job3Desc: `<ul class="task-list"><li>Developed information platform modules: Python backend, Angular frontend</li><li>Implemented ETL pipeline for migrating archive data to production servers (team project, Java)</li><li>Infrastructure integration & data integrity assurance during migration processes</li></ul>`,
+                job2Title: 'Developer / System Administrator', job2Meta: '2022 — 2023 • Armed Forces of RF | Security Clearance Level 2',
+                job2Desc: `<ul class="task-list"><li>Automated document workflow for security clearance forms (C#, WPF desktop application)</li><li>Server administration & cross-platform data exchange optimization (Windows ↔ Astra Linux)</li><li>Maintained critical infrastructure in an isolated network environment</li></ul>`,
+                job1Title: 'Education & Projects', job1Meta: '2018 — 2022 • KGPK | Computer Systems Programming + Computer Operator',
+                job1Desc: `<ul class="task-list"><li><strong>Hackathon:</strong> Voice translator prototype with TTS engine (C#, WPF, MS SQL)</li><li><strong>WorldSkills Junior:</strong> Preparation in "Business Software Solutions" profile — advanced C#, WPF, relational DBs</li><li><strong>Tech stack:</strong> C#, .NET 8+, WPF, 1C:Enterprise, HTML/CSS, MS SQL, Adobe Creative Suite</li></ul>`,
+                btnTelegram: 'Message on Telegram', btnPortfolio: 'GitHub Portfolio', btnPDF: 'Download Resume (PDF)',
+                copied: '✓ Copied', available: 'Available for projects',
+                footnoteAge: '23 years old', footnoteStatus: 'Married'
+            }
+        };
+
+        /* ========================================
+           🌓 THEME MANAGER (Optimized)
+           ======================================== */
+        const ThemeManager = {
+            key: 'card_theme_pref', current: 'dark',
+            init() {
+                const saved = localStorage.getItem(this.key);
+                const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                this.current = saved || (systemDark ? 'dark' : 'light');
+                this.apply();
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                    if (!localStorage.getItem(this.key)) { this.current = e.matches ? 'dark' : 'light'; this.apply(); }
+                }, { passive: true });
+            },
+            toggle() { this.current = this.current === 'dark' ? 'light' : 'dark'; localStorage.setItem(this.key, this.current); this.apply(); },
+            apply() {
+                document.documentElement.setAttribute('data-theme', this.current);
+                const meta = document.getElementById('theme-color-meta'); if (meta) meta.content = this.current === 'dark' ? '#0f172a' : '#f8fafc';
+                const btn = document.getElementById('themeToggle'); if (btn) btn.querySelector('.icon').textContent = this.current === 'dark' ? '☀️' : '🌙';
+            }
+        };
+
+        /* ========================================
+           🌐 LANGUAGE MANAGER (Optimized)
+           ======================================== */
+        const LangManager = {
+            key: 'card_lang_pref', current: 'ru',
+            init() {
+                const saved = localStorage.getItem(this.key);
+                const browser = navigator.language?.split('-')[0];
+                this.current = saved || (i18n[browser] ? browser : 'ru');
+                this.apply();
+            },
+            toggle() { this.current = this.current === 'ru' ? 'en' : 'ru'; localStorage.setItem(this.key, this.current); this.apply(); },
+            apply() {
+                document.body.classList.add('lang-transition');
+                const texts = i18n[this.current];
+                
+                // Batch DOM updates for performance
+                const frag = document.createDocumentFragment();
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (texts[key]) { const clone = el.cloneNode(false); clone.textContent = texts[key]; el.replaceWith(clone); }
+                });
+                document.querySelectorAll('[data-i18n-html]').forEach(el => {
+                    const key = el.getAttribute('data-i18n-html');
+                    if (texts[key]) { const clone = el.cloneNode(false); clone.innerHTML = texts[key]; el.replaceWith(clone); }
+                });
+                
+                document.documentElement.lang = this.current;
+                const btn = document.getElementById('langToggle'); if (btn) btn.querySelector('.icon').textContent = this.current === 'ru' ? '🇷🇺' : '🇬🇧';
+                const status = document.querySelector('.avatar-status'); if (status) status.setAttribute('title', texts.available);
+                
+                // Recalculate heights after DOM update
+                requestAnimationFrame(() => {
+                    document.querySelectorAll('.section.expanded .section-content').forEach(c => {
+                        c.style.transition = 'none'; c.style.maxHeight = c.scrollHeight + 'px';
+                        requestAnimationFrame(() => c.style.transition = '');
+                    });
+                    document.body.classList.remove('lang-transition');
+                });
+            },
+            t: (k) => i18n[LangManager.current]?.[k] || k
+        };
+
+        /* ========================================
+           📋 COPY TO CLIPBOARD (Optimized)
+           ======================================== */
+        function copyToClipboard(text, button) {
+            const original = button.querySelector('.btn-text')?.textContent;
+            const success = () => {
+                button.classList.add('copied');
+                const t = button.querySelector('.btn-text'); if (t) t.textContent = LangManager.t('copied');
+                setTimeout(() => { button.classList.remove('copied'); if (t && original) t.textContent = original; }, 2000);
+            };
+            if (navigator.clipboard?.writeText) {
+                navigator.clipboard.writeText(text).then(success).catch(() => alert(text));
+            } else { alert(text); }
+        }
+
+        /* ========================================
+           📄 PDF DOWNLOAD (Optimized)
+           ======================================== */
+        function downloadPDF() {
+            const btn = document.getElementById('pdfBtn');
+            const originalIcon = btn.querySelector('.btn-icon').textContent;
+            btn.querySelector('.btn-icon').textContent = '⏳';
+            btn.disabled = true;
+            setTimeout(() => { window.print(); setTimeout(() => { btn.querySelector('.btn-icon').textContent = originalIcon; btn.disabled = false; }, 500); }, 200);
+        }
+
+        /* ========================================
+           📦 COLLAPSIBLE SECTIONS (Optimized)
+           ======================================== */
+        function initCollapsible() {
+            document.querySelectorAll('.section-header').forEach(header => {
+                const section = header.closest('.section');
+                const content = section.querySelector('.section-content');
+                const toggle = (expand) => {
+                    const is = expand !== undefined ? expand : !section.classList.contains('expanded');
+                    section.classList.toggle('expanded', is);
+                    header.setAttribute('aria-expanded', is);
+                    content.style.transition = 'none';
+                    content.style.maxHeight = is ? content.scrollHeight + 'px' : '0';
+                    requestAnimationFrame(() => content.style.transition = '');
+                };
+                header.addEventListener('click', () => toggle(), { passive: true });
+                header.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+                if (section.id === 'skills-section') { section.classList.add('expanded'); header.setAttribute('aria-expanded', 'true'); }
+            });
+        }
+
+        /* ========================================
+           🎬 SCROLL ANIMATIONS (Optimized)
+           ======================================== */
+        function initScrollAnimations() {
+            if (!('IntersectionObserver' in window)) return;
+            const observer = new IntersectionObserver(entries => {
+                for (const entry of entries) {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        observer.unobserve(entry.target);
+                    }
+                }
+            }, { threshold: 0.1, rootMargin: '50px' });
+            document.querySelectorAll('.fade-in').forEach(el => { el.style.animationPlayState = 'paused'; observer.observe(el); });
+        }
+
+        /* ========================================
+           🚀 INIT (Optimized with passive listeners)
+           ======================================== */
+        document.addEventListener('DOMContentLoaded', () => {
+            ThemeManager.init(); LangManager.init(); initCollapsible(); initScrollAnimations();
+            document.getElementById('themeToggle')?.addEventListener('click', () => ThemeManager.toggle(), { passive: true });
+            document.getElementById('langToggle')?.addEventListener('click', () => LangManager.toggle(), { passive: true });
+            setTimeout(() => document.querySelector('.card').style.animation = 'cardEntrance 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards', 50);
+        }, { passive: true });
+
+        /* ========================================
+           📄 STRUCTURED DATA (SEO)
+           ======================================== */
+        const structuredData = {
+            "@context": "https://schema.org", "@type": "Person", "name": "Русин Даниил",
+            "jobTitle": "Fullstack & Embedded Developer",
+            "description": "Разработчик с 5+ лет опыта. Специализация: C#, Python, Java, архитектура, изолированные контуры, LLM.",
+            "url": "https://github.com/Ai-vey", "email": "mailto:d.russin@yandex.ru", "telephone": "+79045227843",
+            "sameAs": ["https://t.me/AiveyYay", "https://github.com/Ai-vey"],
+            "knowsAbout": ["C#", ".NET", "WPF", "Python", "Java", "Angular", "PostgreSQL", "Embedded", "LLM"],
+            "availableLanguage": ["ru", "en"]
+        };
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.textContent = JSON.stringify(structuredData);
+        document.head.appendChild(script);
+    </script>
+</body>
 </html>
